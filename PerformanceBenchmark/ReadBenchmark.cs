@@ -4,10 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
+using BLite.Core.Query;
 using LiteDB;
 
 namespace PerformanceBenchmark;
 
+// LaunchCount=2, run 2 processes, take the second result, the cold start effect basically disappears
+[SimpleJob(2, 5, 10, id: "FastAndAccurate")]
+[GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+[JsonExporterAttribute.Full]
 public class ReadBenchmark
 {
     private BenchmarkBLiteDbContext _bliteDb = null!;
@@ -74,6 +80,7 @@ public class ReadBenchmark
     // ==========================================
 
     [Benchmark(Baseline = true, Description = "LiteDB: Query by SourceId (1-to-N)")]
+    [BenchmarkCategory("1-to-N")]
     public void LiteDB_QueryBySourceId()
     {
         foreach (var sourceId in _sampleSourceIds)
@@ -83,6 +90,7 @@ public class ReadBenchmark
     }
 
     [Benchmark(Description = "BLite: Query by SourceId (1-to-N)")]
+    [BenchmarkCategory("1-to-N")]
     public async Task BLite_QueryBySourceId()
     {
         foreach (var sourceId in _sampleSourceIds)
@@ -91,11 +99,22 @@ public class ReadBenchmark
         }
     }
 
+    [Benchmark(Description = "BLite: Query by SourceId via LINQ (1-to-N)")]
+    [BenchmarkCategory("1-to-N")]
+    public async Task BLite_QueryBySourceIdViaLINQ()
+    {
+        foreach (var sourceId in _sampleSourceIds)
+        {
+            var result = await _bliteDb.Photos.AsQueryable().Where(x => x.SourceId == sourceId).ToListAsync();
+        }
+    }
+
     // ==========================================
     // 2. Test FilePath exact match query (1-to-1)
     // ==========================================
 
-    [Benchmark(Description = "LiteDB: Query by FilePath (1-to-1)")]
+    [Benchmark(Baseline = true, Description = "LiteDB: Query by FilePath (1-to-1)")]
+    [BenchmarkCategory("1-to-1")]
     public void LiteDB_QueryByFilePath()
     {
         foreach (var filePath in _sampleFilePaths)
@@ -105,11 +124,22 @@ public class ReadBenchmark
     }
 
     [Benchmark(Description = "BLite: Query by FilePath (1-to-1)")]
+    [BenchmarkCategory("1-to-1")]
     public async Task BLite_QueryByFilePath()
     {
         foreach (var filePath in _sampleFilePaths)
         {
             var result = await _bliteDb.Photos.FindAsync(x => x.FilePath == filePath).FirstOrDefaultAsync();
+        }
+    }
+
+    [Benchmark(Description = "BLite: Query by FilePath via LINQ (1-to-1)")]
+    [BenchmarkCategory("1-to-1")]
+    public async Task BLite_QueryByFilePathViaLINQ()
+    {
+        foreach (var filePath in _sampleFilePaths)
+        {
+            var result = await _bliteDb.Photos.AsQueryable().Where(x => x.FilePath == filePath).FirstOrDefaultAsync();
         }
     }
 }
