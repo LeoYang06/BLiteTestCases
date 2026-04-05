@@ -28,28 +28,23 @@ public class ReadBenchmark
 
     private List<string> _sampleSourceIds = null!;
 
-    [Params(20)] public int TotalFolders;
+    [Params(20)]
+    public int TotalFolders;
 
-    [Params(5_000)] public int TotalPhotos;
+    [Params(5_000)]
+    public int TotalPhotos;
 
     [GlobalSetup]
     public void Setup()
     {
-        Console.WriteLine($"=> Initializing read of benchmark test environment {TotalPhotos} items of data)...");
+        Console.WriteLine("=> Initializing pagination benchmark environment ({TotalPhotos} records)...");
         var (photos, sourceIds, filePaths) = DataGenerator.Generate(TotalPhotos, TotalFolders);
         _sampleSourceIds = sourceIds;
         _sampleFilePaths = filePaths;
 
         var tempDir = Path.Combine(Path.GetTempPath(), "DatabaseBenchmark");
-        if (!Directory.Exists(tempDir))
-        {
-            Directory.CreateDirectory(tempDir);
-        }
-        else
-        {
-            Directory.Delete(tempDir, true);
-            Directory.CreateDirectory(tempDir);
-        }
+        if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true);
+        Directory.CreateDirectory(tempDir);
 
         _liteDbPath = Path.Combine(tempDir, $"litedb_read_{Guid.NewGuid()}.db");
         _bliteDbPath = Path.Combine(tempDir, $"blitedb_read_{Guid.NewGuid()}.db");

@@ -19,7 +19,9 @@ public partial class BenchmarkBLiteDbContext : DocumentDbContext
         modelBuilder.Entity<BenchmarkPhotoPo>()
            .ToCollection("Photos")
            .HasIndex(x => x.Id, unique: true)
+           .HasIndex(x => x.FilePath, unique: true)
            .HasIndex(x => x.SourceId)
-           .HasIndex(x => x.FilePath, unique: true);
+           .HasIndex(x => x.DateTaken)
+           .HasIndex(x => new { x.DateTaken, x.Id });
     }
 }
