@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceBenchmark", "Per
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotEnoughSpaceIssue", "NotEnoughSpaceIssue\NotEnoughSpaceIssue.csproj", "{95C78050-2CF9-4EA9-847C-F5CEBF9C6FC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotEnoughSpaceFSIIssue", "NotEnoughSpaceFSIIssue\NotEnoughSpaceFSIIssue.csproj", "{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueriesWithORContainsReturnPhantomObjectsIssue", "QueriesWithORContainsReturnPhantomObjectsIssue\QueriesWithORContainsReturnPhantomObjectsIssue.csproj", "{D9FB4CF7-7E7C-4B87-9578-A134BAC1C5BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{95C78050-2CF9-4EA9-847C-F5CEBF9C6FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C78050-2CF9-4EA9-847C-F5CEBF9C6FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C78050-2CF9-4EA9-847C-F5CEBF9C6FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9FB4CF7-7E7C-4B87-9578-A134BAC1C5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9FB4CF7-7E7C-4B87-9578-A134BAC1C5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9FB4CF7-7E7C-4B87-9578-A134BAC1C5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9FB4CF7-7E7C-4B87-9578-A134BAC1C5BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
