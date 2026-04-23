@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceBenchmark", "Per
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotEnoughSpaceIssue", "NotEnoughSpaceIssue\NotEnoughSpaceIssue.csproj", "{95C78050-2CF9-4EA9-847C-F5CEBF9C6FC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotEnoughSpaceFSIIssue", "NotEnoughSpaceFSIIssue\NotEnoughSpaceFSIIssue.csproj", "{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCollectionCaseNotEnoughSpaceIssue", "CrossCollectionCaseNotEnoughSpaceIssue\CrossCollectionCaseNotEnoughSpaceIssue.csproj", "{1AC298B9-C5AC-4B9D-BFC9-BF8DCB81DE76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueriesWithORContainsReturnPhantomObjectsIssue", "QueriesWithORContainsReturnPhantomObjectsIssue\QueriesWithORContainsReturnPhantomObjectsIssue.csproj", "{D9FB4CF7-7E7C-4B87-9578-A134BAC1C5BE}"
 EndProject
