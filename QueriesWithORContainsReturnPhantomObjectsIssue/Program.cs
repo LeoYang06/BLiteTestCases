@@ -50,8 +50,17 @@ internal class Program
         var idList = new[] { sourceId, "ANOTHER_ID" };
         var bugList = await db.Photos.AsQueryable().Where(x => idList.Contains(x.SourceId)).ToListAsync();
 
-        Console.ForegroundColor = bugList.Count == 1420 ? ConsoleColor.Red : ConsoleColor.Green;
-        Console.WriteLine($"[Test 3] Where(Contains).ToList().Count = {bugList.Count} ❌ (Expected: 710)");
+        if (bugList.Count == 1420)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[Test 3] Where(Contains).ToList().Count = {bugList.Count} ❌ (Expected: 710)");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"[Test 3] Where(Contains).ToList().Count = {bugList.Count} (Expected: 710)");
+        }
+
         Console.ResetColor();
 
         // ==========================================

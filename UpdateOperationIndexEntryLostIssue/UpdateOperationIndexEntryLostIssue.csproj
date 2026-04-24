@@ -5,16 +5,12 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>UpdateOp0erationIndexEntryLostIssue</AssemblyName>
+        <RootNamespace>UpdateOp0erationIndexEntryLostIssue</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BLite" Version="4.3.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Update="global.db">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+      <PackageReference Include="BLite" Version="4.4.1" />
     </ItemGroup>
 
 </Project>
